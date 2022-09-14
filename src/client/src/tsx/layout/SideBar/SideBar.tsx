@@ -10,8 +10,8 @@ import List from "../../components/baseComponents/List";
 import { useAppSelector } from "../../redux/hooks";
 import NavLinkLI from "../../components/baseComponents/NavLinkLI";
 import { SiGoogleads } from "react-icons/si";
-import { BsFillPeopleFill } from "react-icons/bs";
-import { AiFillSchedule } from "react-icons/ai";
+import { BsFillPeopleFill, BsFileEarmarkPost } from "react-icons/bs";
+
 import style from "./SideBar.module.scss";
 import { useDispatch } from "react-redux";
 import { setOneDropDownOn } from "../../redux/slices/menusSlice";
@@ -19,8 +19,8 @@ import { setOneDropDownOn } from "../../redux/slices/menusSlice";
 const sideBarLink: LinkData[] = [
   {
     to: APP_ROUTE.PastesRoute,
-    text: "Trainees",
-    icon: <BsFillPeopleFill className={style.icon} />,
+    text: "Pastes",
+    icon: <BsFileEarmarkPost className={style.icon} />,
   },
   // {
   //   to: APP_ROUTE.LEADS_ROUTE,

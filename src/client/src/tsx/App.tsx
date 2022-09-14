@@ -11,7 +11,7 @@ function App() {
       <Header className={style.header} />
 
       <Main className={style.main_layout}>
-        <SideBar className={style.side_bar} />
+        {/* <SideBar className={style.side_bar} /> */}
         <section className={style.main_content}>
           <Outlet />
         </section>

@@ -3,7 +3,7 @@
 .header {
   padding: 0 2rem;
   height: $HEADER_HEIGHT;
-  background-color: rgb(248, 249, 249);
+  background-color: rgb(67, 101, 165);
 
   @include flex-dir(flex-end, center);
 }
@@ -15,7 +15,7 @@
   gap: 1rem;
   .side_bar {
     flex: $SIDE_BAR_FLEX;
-    min-width: 15%;
+    min-width: 5%;
   }
   .main_content {
     // overflow: scroll;
@@ -46,6 +46,7 @@
     min-height: 100vh;
 
     .side_bar {
+      min-width: initial;
     }
     .main_content {
       // overflow: scroll;

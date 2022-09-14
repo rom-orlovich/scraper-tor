@@ -2,6 +2,7 @@ import React from "react";
 import { LiComponentProps } from "../../components/baseComponents/baseComponentsTypes";
 import List from "../../components/baseComponents/List";
 import LoadingSpinner from "../../components/baseComponents/LoadingSpinner";
+import { usePaginationButtons } from "../../hooks/usePaginationHook";
 import { PastesApi } from "../../redux/api/hooksAPI";
 import { API_ROUTES, Paste } from "../../redux/api/interfaceAPI";
 
@@ -38,22 +39,55 @@ const liPastes = (props: Paste) => {
   );
 };
 function PastsList({ name }: { name?: string }) {
+  const { ButtonLeft, ButtonRight, numPage, setNumPage } =
+    usePaginationButtons();
   const { data, isLoading, isFetching, isError } = PastesApi.useGetItemsQuery({
-    page: 1,
+    page: numPage,
+    author: name || "",
   });
+  // return (
+  //   <MainRoute mainRoutes={[APP_ROUTE.HomeRoute, APP_ROUTE.PastesRoute]}>
+  //     <LoadingSpinner stateData={{ data, isLoading, isFetching, isError }}>
+  //       {(data) => (
+  //         <List
+  //           ulProps={{ className: style.list_pastes }}
+  //           dataArr={data.data}
+  //           LI={liPastes}
+  //         />
+  //       )}
+  //     </LoadingSpinner>
+  //   </MainRoute>
+  // );
 
   return (
-    <MainRoute mainRoutes={[APP_ROUTE.HomeRoute, APP_ROUTE.PastesRoute]}>
-      <LoadingSpinner stateData={{ data, isLoading, isFetching, isError }}>
-        {(data) => (
-          <List
-            ulProps={{ className: style.list_pastes }}
-            dataArr={data.data}
-            LI={liPastes}
-          />
-        )}
-      </LoadingSpinner>
-    </MainRoute>
+    <LoadingSpinner
+      nameData={"Pastes"}
+      stateData={{ data, isLoading, isError, isFetching }}
+    >
+      {(data) => {
+        // const trasnformData = transformFun
+        //   ? { next: data.next, data: data.data.map(transformFun) }
+        //   : data;
+
+        return data.data.length > 0 ? (
+          <>
+            <div className={style.tablePagination_container}>
+              <List
+                ulProps={{ className: style.list_pastes }}
+                dataArr={data.data}
+                LI={liPastes}
+              />
+            </div>
+            <div className={style.buttons_container}>
+              <ButtonLeft className={style.left_button} />
+              {data.next && <ButtonRight className={style.right_button} />}
+            </div>
+          </>
+        ) : (
+          <h1>{"Pastes"} are not found</h1>
+        );
+      }}
+    </LoadingSpinner>
   );
 }
 

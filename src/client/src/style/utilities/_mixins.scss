@@ -1,3 +1,4 @@
+@use "./variables" as *;
 @mixin heightWidth($height, $width) {
   height: $height;
   width: $width;
@@ -44,4 +45,16 @@
   left: $left;
   bottom: $bottom;
   right: $right;
+}
+@mixin button($bg-color, $padTB: 0.8rem, $padRL: 1.2rem) {
+  border-radius: 5px;
+  border: none;
+  padding: $padTB $padRL;
+  background-color: $bg-color;
+}
+
+@mixin smartphone {
+  @media screen and (max-width: $SMARTPHONE) {
+    @content;
+  }
 }

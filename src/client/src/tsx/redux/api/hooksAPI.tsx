@@ -6,7 +6,7 @@ import { apiCreateCRUDHooks } from "./apiCreateCRUDHooks";
 export const PastesApi = apiCreateCRUDHooks<Paste>({
   reducerPath: "PastesApi",
   baseUrl: API_ROUTES.PastesApi,
-  singleEntityName: "",
+  singleEntityName: API_ROUTES.PasteSingleEntity,
   listId: "Pastes",
 });
 

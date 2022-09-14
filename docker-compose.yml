@@ -1,0 +1,67 @@
+version: "3.8"
+services:
+  # tor service
+  tor:
+    image: dperson/torproxy
+    ports:
+      - "8118:8118"
+      - "9050:9050"
+
+  # mongo service
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - "27018:27017"
+    volumes:
+      - "mongodb_db:/data/db"
+
+  # mongo dashboard service
+  mongoex:
+    restart: always
+    image: mongo-express
+    environment:
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=admin
+    ports:
+      - "8082:8081"
+    volumes:
+      - "mongodb_db:/data/db"
+
+  # redis service
+  redis:
+    image: redis:alpine
+    # container_name: redis
+    ports:
+      - "6379:6379"
+
+  # api service
+  api:
+    build: ./src/server
+    ports:
+      - "5000:5000"
+    volumes:
+      - "./src/server:/app/api"
+    environment:
+      - TOR_SERVICE=tor
+      - PORT=5000
+    depends_on:
+      - redis
+      - mongo
+      - tor
+
+  # react service
+  # react:
+  #   build: ./src/client
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - "./src/client:/app/client"
+  #   depends_on:
+  #     - api
+  #   stdin_open: true
+  #   tty: true
+
+volumes:
+  mongodb_db:
+    driver: local

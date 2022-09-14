@@ -30,6 +30,26 @@
     }
   }
 }
+@include smartphone() {
+  .list_pastes {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: center;
+    gap: 0.8rem;
+    padding: 1rem;
+    li {
+      max-width: 100%;
+      flex: 50%;
+      padding: 1rem;
+      @include flex-dir(null, null, column);
+      gap: 0.3em;
+
+      .pastes_details {
+        @include flex-dir(null, null, column);
+      }
+    }
+  }
+}
 
 .list_container {
   height: 65vh;
@@ -56,7 +76,7 @@
 }
 
 @include smartphone() {
-  .tablePagination_container {
+  .list_container {
     height: auto;
     overflow-y: hidden;
     width: 100%;

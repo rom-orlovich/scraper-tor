@@ -45,19 +45,6 @@ function PastsList({ name }: { name?: string }) {
     page: numPage,
     author: name || "",
   });
-  // return (
-  //   <MainRoute mainRoutes={[APP_ROUTE.HomeRoute, APP_ROUTE.PastesRoute]}>
-  //     <LoadingSpinner stateData={{ data, isLoading, isFetching, isError }}>
-  //       {(data) => (
-  //         <List
-  //           ulProps={{ className: style.list_pastes }}
-  //           dataArr={data.data}
-  //           LI={liPastes}
-  //         />
-  //       )}
-  //     </LoadingSpinner>
-  //   </MainRoute>
-  // );
 
   return (
     <LoadingSpinner
@@ -65,13 +52,9 @@ function PastsList({ name }: { name?: string }) {
       stateData={{ data, isLoading, isError, isFetching }}
     >
       {(data) => {
-        // const trasnformData = transformFun
-        //   ? { next: data.next, data: data.data.map(transformFun) }
-        //   : data;
-
         return data.data.length > 0 ? (
           <>
-            <div className={style.tablePagination_container}>
+            <div className={style.list_container}>
               <List
                 ulProps={{ className: style.list_pastes }}
                 dataArr={data.data}

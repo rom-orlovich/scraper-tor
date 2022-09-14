@@ -1,6 +1,40 @@
 @use "../../../../../style/utilities/utilities.scss" as *;
+%input {
+  padding: 0.3rem 0.5rem;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  font-weight: 400;
+}
+span[class*="input_label"],
+span[class*="textarea_label"],
+span[class*="selectInput_label"] {
+  label {
+    font-weight: 500;
+    font-size: 1.2rem;
+  }
+}
+span[class*="input_label"],
+span[class*="selectInput_label"] {
+  @include flex-dir(null, null, column);
+  max-width: 30%;
+  flex: 30%;
+}
 
-.autocomplete_contianer {
+input:not([type="checkbox"]),
+select,
+textarea {
+  @extend %input;
+  border: 2px solid rgb(235, 241, 246);
+  background-color: white;
+  min-width: 8rem;
+  &[name*="location_id"] {
+    min-width: 10rem;
+  }
+  &:focus {
+    outline: 2px solid rgb(114, 151, 224);
+  }
+}
+.autocomplete_container {
   position: relative;
   @include flex-dir(null, null);
   max-width: 50%;
@@ -58,7 +92,7 @@
   }
 }
 @include smartphone() {
-  .autocomplete_contianer {
+  .autocomplete_container {
     p[class*="message_spinner"] {
       @include posAbs(100%, 2%, null, null);
     }

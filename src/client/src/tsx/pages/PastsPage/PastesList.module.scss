@@ -3,15 +3,18 @@
 .list_pastes {
   display: flex;
   flex-flow: wrap;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 0.8rem;
+  padding: 1rem;
   li {
-    box-shadow: 0 2px 4px 6px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 4px 8px rgba(0, 0, 0, 0.05);
     background-color: rgb(255, 255, 255);
-    border-radius: 5px;
-    min-width: 20%;
-    flex: 20%;
+    border-radius: 8px;
+    max-width: 30%;
+    flex: 30%;
+    padding: 1rem;
     @include flex-dir(null, null, column);
-    gap: 0.5rem;
+    gap: 0.3em;
 
     .pastes_details {
       @include flex-dir(null, null, column);
@@ -25,5 +28,37 @@
         white-space: nowrap;
       }
     }
+  }
+}
+
+.list_container {
+  height: 65vh;
+  overflow-y: scroll;
+}
+.buttons_container {
+  margin-top: 0.5rem;
+  @include flex-dir(space-between, center);
+  width: 98%;
+  color: white;
+  .left_button,
+  .right_button {
+    @include button(rgb(114, 151, 224), 0.5rem, 1.5rem);
+    color: white;
+    font-weight: 500;
+  }
+  .left_button {
+    // justify-self: flex-start;
+    margin-right: auto;
+  }
+  .right_button {
+    margin-left: auto;
+  }
+}
+
+@include smartphone() {
+  .tablePagination_container {
+    height: auto;
+    overflow-y: hidden;
+    width: 100%;
   }
 }

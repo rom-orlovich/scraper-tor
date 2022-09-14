@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { ControllerRenderProps, Path } from "react-hook-form";
+import { ControllerRenderProps, FieldValues, Path } from "react-hook-form";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
@@ -26,7 +26,7 @@ import AutocompleteLi, {
   createStrFromValuesOfChosenKeys,
 } from "./AutocompleteLi";
 
-export interface AutocompleteInputProps<T, O = any> {
+export interface AutocompleteInputProps<T, O extends FieldValues = any> {
   className?: string;
   RHFProps?: Partial<ControllerRenderProps<O, Path<O>>>;
   loadingSpinnerResult?: Partial<LoadingSpinnerProps<T>>;
@@ -132,7 +132,7 @@ AutocompleteInputProps<T>) {
 
   return (
     <span
-      className={`${style.autocomplete_contianer} ${className}`}
+      className={`${style.autocomplete_container} ${className}`}
       ref={autoCompleteContainerRef}
     >
       <InputLabel

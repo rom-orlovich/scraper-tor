@@ -1,0 +1,58 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Poppins", sans-serif;
+  background: radial-gradient(#e66465, #e5de91);
+}
+button {
+  cursor: pointer;
+}
+li {
+  list-style: none;
+}
+img {
+  mix-blend-mode: multiply;
+}
+
+::-webkit-scrollbar {
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgb(243, 108, 81);
+  width: 2rem;
+  border-radius: 10px;
+}
+.display-flex {
+  display: flex !important;
+}
+.display-block {
+  display: block;
+}
+.display-none {
+  display: none;
+}
+.center-abs {
+  @include centerAbs();
+}
+
+.center-top-abs {
+  @include posAbs(0%, 50%, null, null);
+  transform: translate(0%, -50%);
+}
+.center-bottom-abs {
+  @include posAbs(null, 50%, null, 0%);
+  transform: translate(0%, -50%);
+}
+
+.transform-left-right {
+  transform: translateX(0%) !important;
+  transition: transform 1s ease-out;
+}

@@ -22,8 +22,9 @@ app.use(pastesRoute);
 async function connectServer() {
   try {
     await connect("mongodb://mongo:27017/pastes");
-
-    redisClient.connect();
+    console.log("mongodb is connected");
+    await redisClient.connect();
+    console.log("redis is connected");
     // redisClient.DEL("cfe918e2bb451d81f69328283785f177");
     // PasteModel.deleteMany({});
     server = app.listen(PORT, () => {

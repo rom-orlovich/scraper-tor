@@ -92,15 +92,13 @@ async function checkHashExist(htmlApi: CheerioAPI, hrefStr: string) {
   const nextHash = createHash("md5").update(hrefStr).digest("hex");
   try {
     const preHash = await redisClient.get(nextHash);
-
-    if (nextHash !== preHash) {
-      console.log(`hash  changed: ${nextHash}`);
-
+    console.log(nextHash, preHash);
+    if (preHash) {
+      console.log(`hash changed: ${nextHash}`);
       createPageData(htmlApi);
-      preHash && (await redisClient.del(preHash));
       await redisClient.set(nextHash, nextHash);
     } else {
-      console.log(`hash not changed: ${nextHash}`);
+      console.log(`hash not changed: ${preHash}`);
     }
   } catch (error) {
     console.log(error);
@@ -114,6 +112,7 @@ const createHrefStr = (htmlApi: CheerioAPI) =>
 
 export async function setDataDB(time: string) {
   let htmlApi = await createHtmlApi();
+
   await checkHashExist(htmlApi, createHrefStr(htmlApi));
 
   schedule(time, async (now: Date) => {

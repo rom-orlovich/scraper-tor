@@ -6,6 +6,8 @@ services:
     ports:
       - "8118:8118"
       - "9050:9050"
+    networks:
+      - app_network
 
   # mongo service
   mongo:
@@ -15,6 +17,8 @@ services:
       - "27018:27017"
     volumes:
       - "mongodb_db:/data/db"
+    networks:
+      - app_network
 
   # mongo dashboard service
   mongoex:
@@ -34,6 +38,8 @@ services:
     # container_name: redis
     ports:
       - "6379:6379"
+    networks:
+      - app_network
 
   # api service
   api:
@@ -49,6 +55,8 @@ services:
       - redis
       - mongo
       - tor
+    networks:
+      - app_network
 
   # react service
   react:
@@ -61,7 +69,11 @@ services:
       - api
     stdin_open: true
     tty: true
+    networks:
+      - app_network
 
 volumes:
   mongodb_db:
     driver: local
+networks:
+  app_network:

@@ -11,8 +11,10 @@ function PastsList({ name }: { name?: string }) {
   const { data, isLoading, isFetching, isError } = PastesApi.useGetItemsQuery({
     page: 1,
   });
+  console.log(data);
   return (
-    <MainRoute mainRoutes={APP_ROUTE.PastesRoute}>
+    <MainRoute mainRoutes={"/"}>
+      <h1>hey</h1>
       <LoadingSpinner stateData={{ data, isLoading, isFetching, isError }}>
         {(data) => (
           <List

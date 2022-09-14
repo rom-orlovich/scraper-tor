@@ -17,6 +17,7 @@ function MainRoute<CTX>({
   context,
   mainRoutes,
 }: MainRouteProps<CTX>) {
+  console.log(getEndPoint(useLocation().pathname), mainRoutes);
   const checkResult = checkSecValueIncludeOrEqualFirstValue(
     mainRoutes,
     getEndPoint(useLocation().pathname)

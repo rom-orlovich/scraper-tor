@@ -14,7 +14,7 @@ import NotesTable from "./PastesList";
 function PastesPage() {
   const [note, setNote] = useState<string[]>(["", ""]);
   return (
-    <MainRoute mainRoutes={APP_ROUTE.PastesRoute}>
+    <MainRoute mainRoutes={["", APP_ROUTE.PastesRoute]}>
       {
         /* <section className={page_style.page_container}>
         <div className={page_style.page_header}>

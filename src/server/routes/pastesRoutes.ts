@@ -3,4 +3,4 @@ import { pastesController } from "../controllers/pastesControllers";
 
 export const pastesRoute = express.Router();
 
-pastesRoute.get("/api", pastesController);
+pastesRoute.get("/api/pastes", pastesController);

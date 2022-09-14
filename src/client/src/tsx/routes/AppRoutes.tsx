@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import App from "../App";
-import PastesPage from "../pages/NotesPage/PastsPage";
+import PastesPage from "../pages/PastsPage/PastsPage";
 
 import MainRoute from "./MainRoute";
 

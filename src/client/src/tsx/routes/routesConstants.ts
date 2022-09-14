@@ -1,1 +1,3 @@
-export enum APP_ROUTE {}
+export enum APP_ROUTE {
+  PastesRoute = "/Pastes",
+}

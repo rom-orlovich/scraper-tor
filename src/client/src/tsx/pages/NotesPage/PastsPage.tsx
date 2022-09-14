@@ -1,19 +1,22 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import AutocompleteInput from "../../components/baseComponents/RHF-Components/AutocompleteInput/AutocompleteInput";
+import { PastesApi } from "../../redux/api/hooksAPI";
 // import { notesAPI } from "../../redux/api/hooksAPI";
 // import { NotesTable as NotesTableAPi } from "../../redux/api/interfaceAPI";
 import MainRoute from "../../routes/MainRoute";
 
 import { APP_ROUTE } from "../../routes/routesConstants";
 import page_style from "../Page.module.scss";
-import NotesTable from "./NotesTable";
+import PastsList from "./PastesList";
+import NotesTable from "./PastesList";
 
-function NotesPage() {
+function PastesPage() {
   const [note, setNote] = useState<string[]>(["", ""]);
   return (
-    <MainRoute mainRoutes={""}>
-      {/* <section className={page_style.page_container}>
+    <MainRoute mainRoutes={APP_ROUTE.PastesRoute}>
+      {
+        /* <section className={page_style.page_container}>
         <div className={page_style.page_header}>
           <AutocompleteInput<NotesTableAPi>
             keys={["name_topic"]}
@@ -37,9 +40,12 @@ function NotesPage() {
         <div className={page_style.page_main_content}>
           <NotesTable name={note[1]} />
         </div>
-      </section> */}
+      </section> */
+
+        <PastsList />
+      }
     </MainRoute>
   );
 }
 
-export default NotesPage;
+export default PastesPage;

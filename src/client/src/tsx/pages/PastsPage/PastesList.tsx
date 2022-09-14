@@ -13,19 +13,19 @@ function PastsList({ name }: { name?: string }) {
   });
   console.log(data);
   return (
-    <MainRoute mainRoutes={"/"}>
-      <h1>hey</h1>
-      <LoadingSpinner stateData={{ data, isLoading, isFetching, isError }}>
-        {(data) => (
-          <List
-            dataArr={data.data}
-            LI={(props) => {
-              return <li> {props.title}</li>;
-            }}
-          />
-        )}
-      </LoadingSpinner>
-    </MainRoute>
+    // <MainRoute mainRoutes={""}>
+    //   <h1>hey</h1>
+    <LoadingSpinner stateData={{ data, isLoading, isFetching, isError }}>
+      {(data) => (
+        <List
+          dataArr={data.data}
+          LI={(props) => {
+            return <li> {props.title}</li>;
+          }}
+        />
+      )}
+    </LoadingSpinner>
+    // </MainRoute>
   );
 }
 

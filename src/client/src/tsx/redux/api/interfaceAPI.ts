@@ -22,6 +22,12 @@ export interface ResponseQueryAPI<T> {
   next: boolean;
   data: T[];
 }
+export interface ErrorResponseAPI<T> {
+  // next: boolean;
+  // data: T[];
+
+  message: string;
+}
 
 export interface Paste {
   title: string;

@@ -17,11 +17,11 @@ import { useDispatch } from "react-redux";
 import { setOneDropDownOn } from "../../redux/slices/menusSlice";
 
 const sideBarLink: LinkData[] = [
-  // {
-  //   to: APP_ROUTE.TRAINEES_ROUTE,
-  //   text: "Trainees",
-  //   icon: <BsFillPeopleFill className={style.icon} />,
-  // },
+  {
+    to: APP_ROUTE.PastesRoute,
+    text: "Trainees",
+    icon: <BsFillPeopleFill className={style.icon} />,
+  },
   // {
   //   to: APP_ROUTE.LEADS_ROUTE,
   //   text: "Leads",

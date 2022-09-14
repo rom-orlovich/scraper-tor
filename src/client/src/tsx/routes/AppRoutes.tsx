@@ -10,7 +10,8 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<App />}>
-        <Route index element={<PastesPage />}></Route>
+        <Route index element={<PastesPage />} />
+        <Route path={APP_ROUTE.PastesRoute} element={<PastesPage />}></Route>
       </Route>
 
       <Route path="*" element={<App />} />

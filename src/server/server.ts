@@ -8,6 +8,7 @@ import { Server } from "http";
 import { createClient } from "redis";
 import { setDataDB } from "./scraper";
 import { pastesRoute } from "./routes/pastesRoutes";
+// import { PasteModel } from "./models/PastesModel";
 
 const app = express();
 
@@ -24,9 +25,9 @@ async function connectServer() {
     await connect("mongodb://mongo:27017/pastes");
     console.log("mongodb is connected");
     await redisClient.connect();
-    console.log("redis is connected");
-    // redisClient.DEL("cfe918e2bb451d81f69328283785f177");
-    // PasteModel.deleteMany({});
+    // console.log("redis is connected");
+    // await redisClient.DEL("cfe918e2bb451d81f69328283785f177");
+    // await PasteModel.deleteMany({});
     server = app.listen(PORT, () => {
       console.log(`listen port to ${PORT}`);
     });

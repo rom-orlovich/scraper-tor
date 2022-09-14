@@ -1,3 +1,4 @@
 export enum APP_ROUTE {
-  PastesRoute = "/Pastes",
+  HomeRoute = "/",
+  PastesRoute = "/pastes",
 }

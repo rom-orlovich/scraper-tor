@@ -31,6 +31,8 @@ services:
       - "8082:8081"
     volumes:
       - "mongodb_db:/data/db"
+    networks:
+      - app_network
 
   # redis service
   redis:

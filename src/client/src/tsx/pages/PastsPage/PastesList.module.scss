@@ -1,0 +1,29 @@
+@use "../../../style/utilities/utilities.scss" as *;
+
+.list_pastes {
+  display: flex;
+  flex-flow: wrap;
+  gap: 1rem;
+  li {
+    box-shadow: 0 2px 4px 6px rgba(0, 0, 0, 0.05);
+    background-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    min-width: 20%;
+    flex: 20%;
+    @include flex-dir(null, null, column);
+    gap: 0.5rem;
+
+    .pastes_details {
+      @include flex-dir(null, null, column);
+      :first-child {
+        font-weight: 500;
+      }
+      .content {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 10rem;
+        white-space: nowrap;
+      }
+    }
+  }
+}

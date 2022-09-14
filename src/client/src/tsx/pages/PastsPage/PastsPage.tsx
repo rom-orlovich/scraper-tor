@@ -14,11 +14,10 @@ import NotesTable from "./PastesList";
 function PastesPage() {
   const [note, setNote] = useState<string[]>(["", ""]);
   return (
-    <MainRoute mainRoutes={["", APP_ROUTE.PastesRoute]}>
-      {
-        /* <section className={page_style.page_container}>
+    <MainRoute mainRoutes={[APP_ROUTE.HomeRoute, APP_ROUTE.PastesRoute]}>
+      <section className={page_style.page_container}>
         <div className={page_style.page_header}>
-          <AutocompleteInput<NotesTableAPi>
+          {/* <AutocompleteInput<NotesTableAPi>
             keys={["name_topic"]}
             id={"note_id"}
             loadingSpinnerResult={{ nameData: "Notes" }}
@@ -31,19 +30,16 @@ function PastesPage() {
                 htmlFor: "NoteTopicSearch",
               },
             }}
-          />
+          /> */}
 
-          <span>
+          {/* <span>
             <Link to={`${APP_ROUTE}`}>Add Note</Link>
-          </span>
+          </span> */}
         </div>
         <div className={page_style.page_main_content}>
-          <NotesTable name={note[1]} />
+          <PastsList />
         </div>
-      </section> */
-
-        <PastsList />
-      }
+      </section>
     </MainRoute>
   );
 }

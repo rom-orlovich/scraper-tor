@@ -15,10 +15,12 @@
   gap: 1rem;
   .side_bar {
     flex: $SIDE_BAR_FLEX;
+    min-width: 15%;
   }
   .main_content {
     // overflow: scroll;
     margin-top: 0.5rem;
+
     @include flex-dir(center, null);
     flex: $MAIN_CONTENT_FLEX_WIDTH;
   }
@@ -32,7 +34,7 @@
   .header {
     padding: 0 1rem;
     position: fixed;
-
+    background-color: #fff;
     z-index: 100;
     width: 100%;
     top: 0;

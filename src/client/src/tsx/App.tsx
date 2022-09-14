@@ -5,6 +5,7 @@ import SideBar from "./layout/SideBar/SideBar";
 import style from "./App.module.scss";
 function App() {
   // Basic layout of the app.
+
   return (
     <>
       <Header className={style.header} />

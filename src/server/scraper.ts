@@ -57,7 +57,16 @@ export function convertToUTC(time: string) {
 export const getPostData = async (url: string | undefined) => {
   if (!url) return "";
   const htmlApi = await createHtmlApi(url);
-  const text = htmlApi("ol").text().replace(/\n/g, " ");
+  const text = htmlApi("ol li")
+    .toArray()
+    .filter((el) => htmlApi(el).text())
+    .map((el) =>
+      htmlApi(el)
+        .text()
+        .replace(/^\s+|\s+$/g, "")
+    )
+    .join("");
+  // console.log(text);
 
   return text;
 };
@@ -93,10 +102,11 @@ async function checkHashExist(htmlApi: CheerioAPI, hrefStr: string) {
   try {
     const preHash = await redisClient.get(nextHash);
     console.log(nextHash, preHash);
-    if (preHash) {
+    if (!preHash) {
       console.log(`hash changed: ${nextHash}`);
-      createPageData(htmlApi);
+      await createPageData(htmlApi);
       await redisClient.set(nextHash, nextHash);
+      console.log("Data has finish");
     } else {
       console.log(`hash not changed: ${preHash}`);
     }

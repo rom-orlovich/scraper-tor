@@ -18,7 +18,7 @@ function List<T extends Record<string, any>>({
   let key = keys[0] + keys[1];
 
   return (
-    <ul {...ulProps} className={className}>
+    <ul {...ulProps} className={`${className} ${ulProps?.className}`}>
       {!insertChildLast ? children : ""}
       {dataArr.map((el, i) => {
         return <LI key={`${key}${i}`} {...el} />;

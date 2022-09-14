@@ -51,16 +51,16 @@ services:
       - tor
 
   # react service
-  # react:
-  #   build: ./src/client
-  #   ports:
-  #     - "3000:3000"
-  #   volumes:
-  #     - "./src/client:/app/client"
-  #   depends_on:
-  #     - api
-  #   stdin_open: true
-  #   tty: true
+  react:
+    build: ./src/client
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./src/client:/app/client"
+    depends_on:
+      - api
+    stdin_open: true
+    tty: true
 
 volumes:
   mongodb_db:

@@ -10,7 +10,6 @@ import { redisClient } from "./server";
 export async function getHtml(
   url = "http://paste2vljvhmwq5zy33re2hzu4fisgqsohufgbljqomib2brzx3q4mid.onion/lists"
 ) {
-  console.log(process.env.TOR_SERVICE);
   const data = await axios.get(url, {
     proxy: {
       host: process.env.TOR_SERVICE || "localhost",

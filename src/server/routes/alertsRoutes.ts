@@ -1,6 +1,8 @@
 import express from "express";
-import { alertsController } from "../controllers/alertsControllers";
+import { deleteAlert, getAlerts } from "../controllers/alertsControllers";
 
-export const alertsRoute = express.Router();
-
-alertsRoute.get("/api/alerts", alertsController);
+const alertsRoute = express.Router();
+alertsRoute.route("/api/alerts");
+alertsRoute.get("/", getAlerts);
+alertsRoute.delete(":id", deleteAlert);
+export default alertsRoute;

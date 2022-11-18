@@ -2,18 +2,23 @@
 # Scraper Tor
 
 
-## About
-This was project was  
+## About this project:
+This hackathon project collaborated with [Rapid7](https://www.rapid7.com/).  
+The app scraps every 10 minutes dark web site that posts illegal pastes such as drugs, pornography content, organs and weapons trade, etc.
+Then, if there is new content, the app will display the appropriate message and the pastes list.
 
 
 ## What have I learned?
+1. About Docker and its components: images and containers.
+2. How to use Docker by creating DockerFile and Docker-compose. 
+3. What is web-scrapping, and how do we schedule it with node-cron.
+4. How to use Redis for memorization.
+5. What is the darknet and how we can connect it via the tor browser.
+6. How to proxy HTTP requests to tor-network via Docker.
 
 
 
 ## Technologies:
-
-## Technologies:
-
 - **[React](https://reactjs.org/)**
 - **[TypeScript](https://www.typescriptlang.org/)**
 - **[Sass](https://www.npmjs.com/package/sass)**
@@ -30,7 +35,7 @@ This was project was
 - **Back-end**:
   - [Express](https://www.npmjs.com/package/express)- For building the server.
   - [Mongoose](https://mongoosejs.com/) - For DB management.
-  - [Cheerio](https://cheerio.js.org/) - For web scrapering.
+  - [Cheerio](https://cheerio.js.org/) - For web scraping.
   - [Cron](https://www.npmjs.com/package/cron) - For DB management.
   - [Redis](https://www.npmjs.com/package/redis) - For memory caching.
   - [Webpack](https://www.npmjs.com/package/webpack) - For modules bundling and building the server side.
@@ -47,26 +52,19 @@ This was project was
    ```
     npm run init-p
    ```
-3. **Run all the Docker's containers**
+3. **Run all the Docker containers**
    ```
    bash docker_compose_active.sh all
-   
    ```
    
 5. **Go to http://localhost:3000 and have fun**!
 
-## Main Feautres:
+## Main Features:
 1. **Autocomplete Search Input** - Suggests a list of results from the server.
    Infinite scroll: When there are more than ten possible suggestions, the users can scroll and fetch more suggestions from the server.
 2. **Table Pagination** - This shows when there are more than ten items. 
-3. **Alerts system** -  Alerts displays when new pastes were published.
+3. **Alerts system** -  Alerts displays when new pastes are published.
 
 
 ## Images: 
 <img alt="Filter pokemons by their names" src="./readme-images/overview.png" width="600" hight="600">
-
-
-
-
-
-

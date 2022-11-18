@@ -10,10 +10,10 @@ Then, if there is new content, the app will display the appropriate message and 
 
 ## What have I learned?
 1. About Docker and its components: images and containers.
-2. How to use Docker by creating DockerFile and Docker-compose. 
-3. What is web-scrapping, and how do we schedule it with node-cron.
+2. How to use Docker by creating Dockerfile and docker-compose. 
+3. What is web-scrapping, and how I can schedule it with node-cron.
 4. How to use Redis for memorization.
-5. What is the darknet and how we can connect it via the tor browser.
+5. What is the darknet and how I can connect it via the tor browser.
 6. How to proxy HTTP requests to tor-network via Docker.
 
 
@@ -38,7 +38,7 @@ Then, if there is new content, the app will display the appropriate message and 
   - [Cheerio](https://cheerio.js.org/) - For web scraping.
   - [Cron](https://www.npmjs.com/package/cron) - For DB management.
   - [Redis](https://www.npmjs.com/package/redis) - For memory caching.
-  - [Webpack](https://www.npmjs.com/package/webpack) - For modules bundling and building the server side.
+  - [Webpack](https://www.npmjs.com/package/webpack) - For modules bundling of the server side.
   - [Dotenv](https://www.npmjs.com/package/dotenv) - For environment variables.
 
 

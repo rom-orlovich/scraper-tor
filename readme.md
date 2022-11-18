@@ -1,8 +1,9 @@
 
-# Pokedex
+# Scraper Tor
 
 
 ## About
+This was project was  
 
 
 ## What have I learned?
@@ -40,35 +41,30 @@
 ## Installation
 1. **Clone the repo**
    ```
-   git clone git@github.com:rom-orlovich/Pokedex.git
+   git@github.com:rom-orlovich/scraper-tor.git
    ```
 2. **Install all the dependencies**
    ```
-    npm ci
+    npm run init-p
    ```
-3. **Run server**
+3. **Run all the Docker's containers**
    ```
-   npm run server
+   bash docker_compose_active.sh all
    
    ```
-4. **Run Client**
-
-   ```
-   npm run start
-   ```
-
+   
 5. **Go to http://localhost:3000 and have fun**!
 
 ## Main Feautres:
-1. **Infinite-Scrolling** - Every time the user scrolls to the bottom of the page, the client fetches more results. There is a scroll-up button
-2. **Filter Pokemons by their name** - The user can filter the display of Pokemons by their names.
-3. **Favorite Pokemons list** - The user can create and remove his favorite Pokemons list.
+1. **Autocomplete Search Input** - Suggests a list of results from the server.
+   Infinite scroll: When there are more than ten possible suggestions, the users can scroll and fetch more suggestions from the server.
+2. **Table Pagination** - This shows when there are more than ten items. 
+3. **Alerts system** -  Alerts displays when new pastes were published.
 
 
 ## Images: 
-<img alt="Filter pokemons by their names" src="./readme-images/search.png" width="600" hight="600">
-<img alt="Favorite pokemons list" src="./readme-images/favorites.png" width="600" hight="600">
-<img alt="Main page" src="./readme-images/main.png" width="600" hight="600">
+<img alt="Filter pokemons by their names" src="./readme-images/overview.png" width="600" hight="600">
+
 
 
 

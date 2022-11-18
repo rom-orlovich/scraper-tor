@@ -20,8 +20,8 @@ app.use(cors());
 let server: Server;
 export const redisClient = createClient({ url: "redis://redis:6379" });
 
-app.use(pastesRoute);
-app.use(alertRoute);
+app.use("/api/pastes", pastesRoute);
+app.use("/api/alerts", alertRoute);
 async function connectServer() {
   try {
     await connect("mongodb://mongo:27017/pastes");

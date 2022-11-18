@@ -26,14 +26,26 @@ export const getAlerts: RequestHandler = async (req, res) => {
 };
 
 export const deleteAlert: RequestHandler = async (req, res) => {
-  const query = { _id: req.params };
+  const query = { _id: req.params.id };
   try {
-    const alerts = await AlertModel.deleteOne(query);
-    console.log(alerts);
+    await AlertModel.deleteOne(query);
+
     // const countAwait = await AlertModel.find(query).count();
 
-    res.status(200).json({ message: "success" });
+    res
+      .status(200)
+      .json({ message: "Alert was deleted successfully", id: req.params.id });
   } catch (error) {
-    res.status(400).json({ message: "alerts not found" });
+    res.status(400).json({ message: "Alert is not found" });
+  }
+};
+export const deleteAllAlerts: RequestHandler = async (req, res) => {
+  const query = {};
+  try {
+    await AlertModel.deleteMany(query);
+
+    res.status(200).json({ message: "Alerts were deleted successfully" });
+  } catch (error) {
+    res.status(400).json({ message: "Alerts are not found" });
   }
 };

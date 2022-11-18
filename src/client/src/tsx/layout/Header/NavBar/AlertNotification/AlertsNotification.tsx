@@ -34,7 +34,7 @@ function DropDownLiAlert(
   // Delete the alert and keep the window open
   const deleteFun = () => {
     props.setAlertNotificationState && props.setAlertNotificationState(true);
-    deleteOne(String(props.data.alert_id));
+    deleteOne(String(props.data._id));
   };
   const deleteAllFun = () => {
     // props.setAlertNotificationState && props.setAlertNotificationState(true);
@@ -42,8 +42,8 @@ function DropDownLiAlert(
     deleteAll({});
   };
 
+console.log(props.data);
 
-  const messageAlert =  props.data.alert_message;
   return (
     <li
       ref={dropDownRef}
@@ -53,9 +53,9 @@ function DropDownLiAlert(
         <span className={style.deleteAll}>
           <VscClearAll onClick={deleteAllFun} />
         </span>
-        <p className={style.alert_message}>{messageAlert}</p>
+        <p className={style.alert_message}>{props.data.title}</p>
         <p className={style.date}>
-          {new Date(props.data.alert_date).toLocaleString()}
+          {props.data.date}
         </p>
       </div>
 
@@ -118,14 +118,14 @@ function AlertsNotification({ className }: AlertsNotificationProps) {
             style.alerts_number,
             // eslint-disable-next-line no-nested-ternary
             data
-              ? 0
+              ? data.countRows
                 ? style.alerts_number_active
                 : style.alerts_number_unActive
               : "",
             scaleUpState ? style.animation_scale_up : ""
           )}
         >
-          {0}
+          {data?.countRows || 0}
         </span>
       </span>
     </DropDown>

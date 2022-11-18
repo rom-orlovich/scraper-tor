@@ -4,6 +4,7 @@ import axios from "axios";
 import { Element, load, CheerioAPI } from "cheerio";
 import { createHash } from "crypto";
 import { schedule } from "node-cron";
+import { AlertModel } from "./models/AlertsModel";
 import { PasteModel } from "./models/PastesModel";
 import { redisClient } from "./server";
 
@@ -89,11 +90,20 @@ export const createPageData = async (htmlApi: CheerioAPI) => {
     .forEach(async (tr, i) => {
       const obj = await createPostObjects(htmlApi, tr, i + 1);
 
-      await PasteModel.updateOne(
+      const paste = await PasteModel.updateOne(
         { url: obj.url },
         { $set: obj },
         { upsert: true }
       );
+
+      if (paste.matchedCount) {
+        const alert = new AlertModel({
+          author: obj.author,
+          title: obj.title,
+          date: obj.date,
+        });
+        await alert.save();
+      }
     });
 };
 

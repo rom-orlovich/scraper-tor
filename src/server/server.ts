@@ -8,6 +8,7 @@ import { Server } from "http";
 import { createClient } from "redis";
 import { setDataDB } from "./scraper";
 import { pastesRoute } from "./routes/pastesRoutes";
+import { alertsRoute } from "./routes/alertsRoutes";
 // import { PasteModel } from "./models/PastesModel";
 
 const app = express();
@@ -20,6 +21,7 @@ let server: Server;
 export const redisClient = createClient({ url: "redis://redis:6379" });
 
 app.use(pastesRoute);
+app.use(alertsRoute);
 async function connectServer() {
   try {
     await connect("mongodb://mongo:27017/pastes");

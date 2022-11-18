@@ -67,9 +67,9 @@ function NavBar() {
       LI={NavBarLi}
       insertChildLast={false}
     >
-      <DropDown dataLI={[]} Li={DropDownLiAlert}>
+      {/* <DropDown dataLI={[]} Li={DropDownLiAlert}> */}
       <AlertsNotification className={style.alert_icon} />
-      </DropDown>
+      {/* </DropDown> */}
     </List>
   );
 }

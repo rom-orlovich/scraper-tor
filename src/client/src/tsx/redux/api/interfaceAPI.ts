@@ -22,6 +22,7 @@ export interface ResponseMutationAPI {
 
 export interface ResponseQueryAPI<T> {
   next: boolean;
+  countRows?:number
   data: T[];
 }
 export interface ErrorResponseAPI<T> {
@@ -40,8 +41,8 @@ export interface Paste {
 }
 
 export interface AlertsAPI {
-  user_id?: number;
-  alert_id: number;
-  alert_date: Date;
-  alert_message: string;
+  _id: Number,
+  title: string,
+  author: string,
+  date: string,
 }

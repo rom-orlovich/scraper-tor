@@ -15,7 +15,7 @@ import useHideUnFocusElement from "../../../../hooks/useHideUnFocusElement";
 
 import { ResponseQueryAPI } from "../../../../redux/api/interfaceAPI";
 
-import { getEnteriesArrObj } from "../../../../utlities/helpersFun";
+import { getEntriesArrObj } from "../../../../utlities/helpersFun";
 import { LiProps } from "../../baseComponentsTypes";
 
 import ListObserver from "../../ListObserver";
@@ -116,7 +116,7 @@ AutocompleteInputProps<T>) {
   };
   // Handle click on option and set the value of that option in the input.
   const handleClickLi = (obj: Record<string, any>) => {
-    const keyValue = getEnteriesArrObj(obj)[0];
+    const keyValue = getEntriesArrObj(obj)[0];
     setinputValue(keyValue);
   };
 

@@ -4,7 +4,7 @@ import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import { middlewareArr, reducersArr } from "./api/hooksAPI";
 import { menusSlice } from "./slices/menusSlice";
 
-//Configure the reducers and the middlewares of redux.
+//Configure the reducers and the middleware of redux.
 export const store = configureStore({
   reducer: {
     menusSlice: menusSlice.reducer,

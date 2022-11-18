@@ -6,7 +6,7 @@ import {
 } from "react";
 
 import {
-  captialFirstLetter,
+  capitalFirstLetter,
   checkIfStrIsValidDate,
 } from "../../../utlities/helpersFun";
 
@@ -34,8 +34,8 @@ export interface TdProps {
 // and return new formated string.
 export const formatThValue = (value: string) => {
   const splitArr = value.split("_");
-  if (!splitArr[1]) return captialFirstLetter(value);
-  return splitArr.map(captialFirstLetter).join(" ");
+  if (!splitArr[1]) return capitalFirstLetter(value);
+  return splitArr.map(capitalFirstLetter).join(" ");
 };
 
 export function ThCell({ value, ...rest }: ThProps) {

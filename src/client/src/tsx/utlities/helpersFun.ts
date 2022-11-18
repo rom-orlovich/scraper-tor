@@ -2,19 +2,19 @@ import { MutationTrigger } from "@reduxjs/toolkit/dist/query/react/buildHooks";
 
 export const getKeysArrObj = <T extends object>(obj: T) => Object.keys(obj);
 export const getValuesArrObj = <T extends object>(obj: T) => Object.values(obj);
-export const getEnteriesArrObj = <T extends object>(obj: T) =>
+export const getEntriesArrObj = <T extends object>(obj: T) =>
   Object.entries(obj);
 
-export const captialFirstLetter = (str: string) =>
+export const capitalFirstLetter = (str: string) =>
   str[0].toUpperCase() + str.slice(1).toLowerCase();
 export const formatDate = (date: Date) => {
   const newDate = new Date(date);
 
-  const formated = new Date(
+  const formatted = new Date(
     newDate.getTime() + Math.abs(newDate.getTimezoneOffset() * 60000)
   );
-  formated.setDate(newDate.getDate() + 1);
-  return formated.toLocaleDateString("en-CA");
+  formatted.setDate(newDate.getDate() + 1);
+  return formatted.toLocaleDateString("en-CA");
 };
 
 export const checkIfStrIsValidDate = (value: string) => {

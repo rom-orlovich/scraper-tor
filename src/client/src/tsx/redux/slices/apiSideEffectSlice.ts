@@ -7,7 +7,7 @@ const initialState: {
   goPrePageBehaviorState: {
     // The response of delete item from the api will have id.
     // therefore the page will return to the pre page.
-    // Enable this behavior only for spesifc components like forms.
+    // Enable this behavior only for specific components like forms.
     disableGoPrevPage: true,
     goPrevPage: false,
   },

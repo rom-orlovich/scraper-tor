@@ -22,30 +22,9 @@ interface NavBarNavLinkLIs<T> {
 }
 
 const navBarLink: NavBarNavLinkLIs<LinkData>[] = [
-  {
-    id: "addIconButton",
-    element: <RiAddCircleFill className={style.add_icon} />,
-    dataLinks: [
-      // {
-      //   to: `/${APP_ROUTE.TRAINEES_ROUTE}/${APP_ROUTE.TRAINEES_ROUTE_ADD}`,
-      //   text: "Add Trainee",
-      // },
-      // {
-      //   to: `/${APP_ROUTE.LEADS_ROUTE}/${APP_ROUTE.LEADS_ROUTE_ADD}`,
-      //   text: "Add Lead",
-      // },
-    ],
-  },
 
-  {
-    id: "profileButton",
-    element: <FaUserCircle className={style.profile_icon} />,
-    dataLinks: [
-      // { to: "", text: "Profile" },
-      // { to: `/${APP_ROUTE.SETTINGS_ROUTE}`, text: "Setting" },
-      // { to: "", text: "Logout" },
-    ],
-  },
+
+
   {
     id: "hamburgerMenu",
     element: <HamburgerMenu />,

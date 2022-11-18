@@ -1,0 +1,102 @@
+@use "./../../../../../style/utilities/utilities.scss" as *;
+
+.ul_notifications {
+  li {
+    .deleteAll {
+      display: none;
+    }
+    background-color: rgb(239 239 239);
+  }
+  li:first-child {
+    .deleteAll {
+      cursor: pointer;
+      display: block;
+      color: rgb(217, 17, 17);
+      font-size: 1.5rem;
+      @include posAbs(0.5%, null, 2%, null);
+    }
+    background-color: rgb(255, 255, 255);
+  }
+}
+
+.notification_li {
+  @include flex-dir(space-between, center, row);
+  min-width: 20rem;
+  padding: 0.8rem;
+  height: fit-content;
+  background-color: white;
+  div {
+    width: 100%;
+  }
+  h3 {
+    text-decoration: underline;
+  }
+  .alert_message {
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem;
+    line-height: 1.2;
+  }
+  .deleteIcon {
+    font-size: 1.7rem;
+    color: rgb(242, 61, 61);
+    cursor: pointer;
+  }
+  .date {
+    font-size: 0.9rem;
+  }
+}
+.alert_icon {
+  position: relative;
+  display: block;
+
+  .alerts_number {
+    @include posAbs(-7%, null, -8%, null);
+    min-width: 1.8rem;
+    min-height: 0.6rem;
+    border-radius: 50%;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: white;
+    @include flex-dir(center, center);
+  }
+
+  .alerts_number_active {
+    background-color: red;
+  }
+  .alerts_number_unActive {
+    background-color: rgb(81, 227, 105);
+  }
+
+  .animation_scale_up {
+    animation: normal 1s scale-up;
+  }
+  @keyframes scale-up {
+    50% {
+      transform: scale(1.5);
+    }
+  }
+  .new_item_animation {
+    animation: normal 1s new_item;
+  }
+  @keyframes new_item {
+    50% {
+      background-color: green;
+    }
+  }
+}
+
+@include smartphone() {
+  .notification_li {
+    padding: 1rem;
+  }
+  .alert_icon {
+    .alerts_number {
+      @include posAbs(-20%, null, -10%, null);
+      min-width: 1.5rem;
+      min-height: 0.5rem;
+
+      font-size: 0.9rem;
+    }
+  }
+}

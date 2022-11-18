@@ -2,13 +2,14 @@ import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 
 import { middlewareArr, reducersArr } from "./api/hooksAPI";
+import { apiSideEffectSlice } from "./slices/apiSideEffectSlice";
 import { menusSlice } from "./slices/menusSlice";
 
 //Configure the reducers and the middleware of redux.
 export const store = configureStore({
   reducer: {
     menusSlice: menusSlice.reducer,
-
+    apiSideEffect: apiSideEffectSlice.reducer,
     ...reducersArr,
   },
 

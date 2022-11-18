@@ -46,3 +46,13 @@ export const checkSecValueIncludeOrEqualFirstValue = <T>(
     return val.includes(val2);
   } else return val === val2;
 };
+
+export const genClassName = (...str: (string | undefined)[]) =>
+  str.map((str) => `${str || ""}`).join(" ");
+
+export const delayFun = (fun: (...arg: any[]) => any, timeout: number) =>
+  new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(fun());
+    }, timeout);
+  });

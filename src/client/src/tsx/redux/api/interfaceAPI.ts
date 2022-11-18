@@ -7,6 +7,8 @@ import { OmitKey, PickKey } from "../../types";
 export enum API_ROUTES {
   PastesApi = "/api/pastes",
   PasteSingleEntity = "paste",
+  ALERTS_ROUTE = "/api/alerts",
+  ALERTS_ENTITY = "alert",
 }
 
 export interface PayloadAPI<T> {
@@ -23,8 +25,7 @@ export interface ResponseQueryAPI<T> {
   data: T[];
 }
 export interface ErrorResponseAPI<T> {
-  // next: boolean;
-  // data: T[];
+
 
   message: string;
 }
@@ -36,4 +37,11 @@ export interface Paste {
   id: number;
   content: string;
   url: string;
+}
+
+export interface AlertsAPI {
+  user_id?: number;
+  alert_id: number;
+  alert_date: Date;
+  alert_message: string;
 }

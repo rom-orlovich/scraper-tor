@@ -1,4 +1,4 @@
-import { API_ROUTES, Paste } from "../api/interfaceAPI";
+import { AlertsAPI, API_ROUTES, Paste } from "../api/interfaceAPI";
 
 import { apiCreateCRUDHooks } from "./apiCreateCRUDHooks";
 
@@ -9,15 +9,31 @@ export const PastesApi = apiCreateCRUDHooks<Paste>({
   singleEntityName: API_ROUTES.PasteSingleEntity,
   listId: "Pastes",
 });
+export const alertsApi = apiCreateCRUDHooks<AlertsAPI>({
+  reducerPath: "alertsApi",
+  baseUrl: API_ROUTES.ALERTS_ROUTE,
+  singleEntityName: API_ROUTES.ALERTS_ENTITY,
+  listId: "alerts_list",
+}).injectEndpoints({
+  endpoints: (builder) => ({
+    deleteAll: builder.mutation({
+      query: () => ({
+        url: ``,
+        method: "delete",
+      }),
+      invalidatesTags: [{ type: API_ROUTES.ALERTS_ENTITY, id: "alerts_list" }],
+    }),
+  }),
+});
 
-export const apiCreatCrudArr = [PastesApi];
+export const apiCreateCrudArr = [PastesApi,alertsApi];
 
-// Create Reducer arr that contains  object with key of the redcuer name and value the reducer function.
+// Create Reducer arr that contains  object with key of the reducer name and value the reducer function.
 let reducersArr = {};
-apiCreatCrudArr.forEach((value) => {
+apiCreateCrudArr.forEach((value) => {
   reducersArr = { ...reducersArr, [value.reducerPath]: value.reducer };
 });
 export { reducersArr };
 
 // Create middlewareArr from the apiCreateCrudArr.
-export const middlewareArr = apiCreatCrudArr.map((el) => el.middleware);
+export const middlewareArr = apiCreateCrudArr.map((el) => el.middleware);

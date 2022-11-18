@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { useCallBackFun } from "./utilitesHooks";
+
 
 function useHideUnFocusElement<E extends HTMLElement>(
-  wrapperRef: React.MutableRefObject<E | null>
+  wrapperRef: React.MutableRefObject<E | null>,
+  setAlertNotificationState?: React.Dispatch<React.SetStateAction<boolean>>
 ) {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleClickOutside = (event: MouseEvent) => {
-    // Set the visible state true if event of onClick was excute inside
+    // Set the visible state true if event of onClick was execute inside
     // the wrapper element ref.
-    setIsVisible(!!wrapperRef?.current?.contains(event.target as HTMLElement));
+    const target = event.target as HTMLElement;
+    if (setAlertNotificationState) {
+      const deleteNotification = target.closest(
+        `svg[class*="AlertsNotification_deleteIcon"]`
+      );
+      setAlertNotificationState(!!deleteNotification);
+    }
+    const checkContains = !!wrapperRef?.current?.contains(target);
+    setIsVisible(checkContains);
   };
 
   useEffect(() => {
@@ -17,7 +26,6 @@ function useHideUnFocusElement<E extends HTMLElement>(
     return () => {
       document.removeEventListener("click", handleClickOutside, false);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return isVisible;

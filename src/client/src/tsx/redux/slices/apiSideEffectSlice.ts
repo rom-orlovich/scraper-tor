@@ -1,50 +1,93 @@
+/* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-import { getKeysArrObj } from "../../utlities/helpersFun";
-const initialState: {
-  goPrePageBehaviorState: { goPrevPage: boolean; disableGoPrevPage: boolean };
-} = {
+import { RootState } from "../store";
+
+export interface PayloadSideEffect {
+  message?: string;
+  data: any;
+  statusCode?: number | undefined;
+}
+
+const initialState = {
   goPrePageBehaviorState: {
     // The response of delete item from the api will have id.
     // therefore the page will return to the pre page.
     // Enable this behavior only for specific components like forms.
-    disableGoPrevPage: true,
-    goPrevPage: false,
+    // disableGoPrevPage: false,
+    goPrevPage: true,
   },
+  isAlertsOpen: false,
+  fetchAlerts: false,
+  isModelOpen: false,
 };
 export const apiSideEffectSlice = createSlice({
   name: "apiSideEffect",
   initialState,
   reducers: {
-    // Enable  behavior of go back to previous page.
+    // Enable behavior of go back to previous page.
     enableGoPrevPage: (state) => {
-      state.goPrePageBehaviorState.disableGoPrevPage = false;
+      state.goPrePageBehaviorState.goPrevPage = true;
     },
-
-    // Reset the goPrePageState.
-    resetGoPrevPageState: (state) => {
-      state.goPrePageBehaviorState.disableGoPrevPage = true;
+    disableGoPrevPage: (state) => {
       state.goPrePageBehaviorState.goPrevPage = false;
     },
+
+    // Toggle the state of the model.
+    changeModelState: (state) => {
+      state.isModelOpen = !state.isModelOpen;
+    },
+    // Toggle the state of the alert.
+    changeAlertsState: (state) => {
+      state.isAlertsOpen = !state.isAlertsOpen;
+    },
+    // Enable fetch new alerts.
+    disableFetchAlerts: (state) => {
+      state.fetchAlerts = false;
+    },
   },
+
   extraReducers: (builder) =>
     // Checks when there is success response from the server after submit form
     // of update/add/delete method.
-    builder.addMatcher(
-      (action: PayloadAction<Record<string, any> | undefined>) => {
-        const payload = getKeysArrObj(action.payload || {});
-        if (payload.includes("id")) {
-          return true;
-        } else return false;
-      },
-      // If there is success response from the server after submit form,
-      // set goPrevPage to true , in order to go back the previous page.
-      (state) => {
-        if (!state.goPrePageBehaviorState.disableGoPrevPage) {
-          state.goPrePageBehaviorState.goPrevPage = true;
+
+    builder
+      .addMatcher(
+        (action: PayloadAction<PayloadSideEffect>) =>
+          action.payload?.statusCode === 201 &&
+          !action.payload?.message?.includes("Login"),
+
+        (state, action) => {
+          // If there is success response from the server after submit form,
+          // set goPrevPage to true , in order to go back the previous page.
+          if (action?.payload?.status !== undefined) {
+            state.goPrePageBehaviorState.goPrevPage = false;
+          }
         }
-      }
-    ),
+      )
+      .addMatcher(
+        (action: PayloadAction<Record<string, any> | undefined>) =>
+          action.payload?.statusCode === 201 &&
+          !action.payload?.message?.includes("token"),
+        (state) => {
+          // // Enable fetch alerts.
+          state.fetchAlerts = true;
+        }
+      ),
+  // .addMatcher(
+  //   (action: PayloadAction<Record<string, any> | undefined>) => true,
+  //   (state, action) => {
+  //     // // Enable fetch alerts.
+  //     console.log(action, state.goPrePageBehaviorState.goPrevPage);
+  //   }
+  // ),
 });
-export const { resetGoPrevPageState, enableGoPrevPage } =
-  apiSideEffectSlice.actions;
+export const {
+  enableGoPrevPage,
+  disableGoPrevPage,
+  disableFetchAlerts,
+  changeModelState,
+  changeAlertsState,
+} = apiSideEffectSlice.actions;
+
+export const getApiSideEffect = (state: RootState) => state.apiSideEffect;
